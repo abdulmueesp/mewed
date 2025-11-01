@@ -7,7 +7,13 @@ export default function Home() {
   return (
     <div>
       <Header/>
-    <RubiksCube />
+      <div className="w-full h-[500px] flex flex-col md:flex-row ">
+       <div className="w-[50%] h-full"></div>
+       <div className="w-[50%] h-full pt-4">
+       <RubiksCube />
+       </div>
+      </div>
+  
     </div>
   );
 }

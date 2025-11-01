@@ -1,18 +1,19 @@
+
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 
-// single small cube
+// Single cube piece
 function SmallCube({ position, color }: { position: [number, number, number]; color: string }) {
   return (
-    <mesh position={position}>
+    <mesh position={position} castShadow>
       <boxGeometry args={[0.9, 0.9, 0.9]} />
       <meshStandardMaterial
         color={color}
-        roughness={0.15}
-        metalness={0.05}
+        roughness={0.3}
+        metalness={0.1}
         emissive={new THREE.Color(color).multiplyScalar(0.25)}
         emissiveIntensity={0.6}
       />
@@ -20,26 +21,45 @@ function SmallCube({ position, color }: { position: [number, number, number]; co
   );
 }
 
-function RubiksCubeGroup() {
+// Rubik's cube group
+function RubiksCubeGroup({ scale }: { scale: number }) {
   const groupRef = useRef<THREE.Group>(null);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [lastPos, setLastPos] = useState<{ x: number; y: number } | null>(null);
+  const [rotationDelta, setRotationDelta] = useState({ x: 0, y: 0 });
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * Math.PI;
-    const y = (e.clientY / window.innerHeight - 0.5) * Math.PI;
-    setMouse({ x, y });
+    if (!isHovering) return;
+    if (lastPos) {
+      const dx = e.clientX - lastPos.x;
+      const dy = e.clientY - lastPos.y;
+      setRotationDelta({
+        x: dy * 0.005,
+        y: dx * 0.005,
+      });
+    }
+    setLastPos({ x: e.clientX, y: e.clientY });
+  };
+
+  const handlePointerEnter = () => setIsHovering(true);
+  const handlePointerLeave = () => {
+    setIsHovering(false);
+    setLastPos(null);
   };
 
   useFrame(() => {
-    if (groupRef.current) {
-      groupRef.current.rotation.x += (mouse.y - groupRef.current.rotation.x) * 0.05;
-      groupRef.current.rotation.y += (mouse.x - groupRef.current.rotation.y) * 0.05;
+    if (!groupRef.current) return;
+    if (isHovering) {
+      groupRef.current.rotation.x += rotationDelta.x;
+      groupRef.current.rotation.y += rotationDelta.y;
+    } else {
+      groupRef.current.rotation.x += 0.003;
+      groupRef.current.rotation.y += 0.006;
     }
   });
 
-  const colors = ["#1d8bf5", "#f50f39", "#fc920f", "#f5e20f", "#45db04", "#faf9f7"];
+  const colors = ["#1d8bf5", "#f50f39", "#f56a07", "#319605", "#faf9f7"];
 
-  // ✅ useMemo → randomize colors only once
   const smallCubes = useMemo(() => {
     const cubes = [];
     for (let x = -1; x <= 1; x++) {
@@ -51,23 +71,66 @@ function RubiksCubeGroup() {
       }
     }
     return cubes;
-  }, []); // 👈 run only once when mounted
+  }, []);
 
   return (
-    <group ref={groupRef} onPointerMove={handlePointerMove}>
+    <group
+      ref={groupRef}
+      position={[0, 1.2, 0]} // slight lift above shadow
+      scale={[scale, scale, scale]}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onPointerMove={handlePointerMove}
+    >
       {smallCubes}
     </group>
   );
 }
 
 export default function RubiksCube() {
+  const [cubeScale, setCubeScale] = useState(0.8);
+
+  // 📱 Responsive cube scaling
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) setCubeScale(0.7);
+      else if (window.innerWidth < 1024) setCubeScale(0.9);
+      else setCubeScale(1.0);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="w-full h-screen bg-[#f5f5f5]">
-      <Canvas camera={{ position: [5, 5, 5] }}>
-        <ambientLight intensity={2} />
-        <directionalLight position={[5, 5, 5]} intensity={2.5} color={"#ffffff"} />
-        <pointLight position={[-5, -5, 5]} intensity={1.5} color={"#b3d9ff"} />
-        <RubiksCubeGroup />
+    <div className="w-full h-[350px] md:h-[500px] pt-8 touch-none select-none">
+      <Canvas
+        shadows
+        camera={{ position: [5, 4, 6], fov: 50 }}
+      >
+        {/* 💡 Lights */}
+        <ambientLight intensity={0.6} />
+        <directionalLight
+          castShadow
+          position={[6, 8, 6]}
+          intensity={2.2}
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
+        />
+        <pointLight position={[-5, -5, 5]} intensity={1.2} color={"#b3d9ff"} />
+
+        {/* 🧊 Cube */}
+        <RubiksCubeGroup scale={cubeScale} />
+
+        {/* 🟫 Shadow floor */}
+        <mesh
+          rotation={[-Math.PI / 2, 0, 0]}
+          position={[0, 0, 0]}
+          receiveShadow
+        >
+          <planeGeometry args={[20, 20]} />
+          <shadowMaterial opacity={0.35} />
+        </mesh>
       </Canvas>
     </div>
   );
