@@ -1,2 +1,27 @@
 @import "tailwindcss";
-
+@keyframes rotate-slow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes rotate-slow-rev {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  .animate-rotate-slow {
+    animation: rotate-slow 40s linear infinite;
+  }
+  
+  .animate-rotate-slow-rev {
+    animation: rotate-slow-rev 45s linear infinite;
+  }
+  

@@ -21,7 +21,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-gray-200">
+    <header className="w-full border-b border-gray-200 bg-white">
       <div className="h-[70px] px-6 flex items-center justify-between md:pl-20">
         {/* Logo Section */}
         <Link href="/" className="flex items-center space-x-2">

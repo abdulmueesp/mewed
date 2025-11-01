@@ -103,7 +103,7 @@ export default function RubiksCube() {
   }, []);
 
   return (
-    <div className="w-full h-[350px] md:h-[500px] pt-8 touch-none select-none">
+    <div className="w-full h-[350px] md:h-[500px] pt-12 touch-none select-none ">
       <Canvas
         shadows
         camera={{ position: [5, 4, 6], fov: 50 }}
