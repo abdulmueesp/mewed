@@ -45,7 +45,6 @@ export default function Home() {
       <div className="absolute w-8 h-8 bg-pink-400 rounded-md top-2 left-4"></div>
      
     </div>
-    
     <div className="absolute top-[60%] left-[50%] w-32 h-32 animate-rotate-slow-rev opacity-50">
       <div
   className="absolute top-[50%] left-[4%] w-0 h-0 
