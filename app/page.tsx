@@ -111,7 +111,58 @@ export default function Home() {
 
 
       </div>
-      <div className="w-full h-[200px] border ">hi</div>
+      {/* about section  */}
+      <div className="flex justify-center items-center px-20 mb-4 mt-[40px]">
+  <div className="w-full h-[500px] rounded-md shadow-2xl flex flex-col md:flex-row items-center justify-between bg-white">
+    {/* LEFT SIDE - IMAGE */}
+    <div className="w-full md:w-1/2 h-full flex justify-center items-center p-3">
+      <img
+        src="/about1.png"
+        alt="About Us"
+        className="w-full h-full object-cover rounded-md"
+      />
+    </div>
+
+    {/* RIGHT SIDE - CONTENT */}
+    <div className="w-full md:w-1/2 h-full flex flex-col justify-between pl-0 md:pl-10 py-6">
+     
+      <button className={`${nunito.className} p-1 border w-[100px] rounded-md`}>About Us</button>
+
+      {/* MIDDLE - TEXT + GIF */}
+      <div className="flex flex-col items-center justify-center border ">
+        <p className="text-black text-center text-lg font-semibold mb-2">
+          WE ARE DEVELOP THAT BRING YOUR IDEAS ALIVE
+        </p>
+        <img
+          src="/lines.png"
+          alt="Line Animation"
+          className="w-[150px] h-[40px]"
+        />
+      </div>
+
+      {/* DESCRIPTION */}
+      <p className="text-gray-600 text-sm leading-relaxed mb-6 border">
+        <strong>EXOUZIA</strong> is a holistic software development company that
+        provides customers with A to Z services in IT and ITES sectors. We
+        provide top domain expertise and proficiency in diverse technologies such
+        as SAAS, mobile, and cloud. With rigorous QA standards, we offer
+        cutting-edge solutions. Our team of high-profile technocrats ensures
+        efficient business operations for our clients.
+      </p>
+
+      {/* BOTTOM - BUTTON */}
+      <div>
+        <button className="px-6 py-2 bg-[#e23a03] hover:bg-[#9c1607] text-white border-2 border-black rounded-md shadow-md transition duration-300">
+          More About Us
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+     <div className="h-[300px] w-full border mb-4"></div>
     </div>
   );
 }
