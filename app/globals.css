@@ -16,7 +16,18 @@
       transform: rotate(-360deg);
     }
   }
- 
+  @keyframes shine {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 120%;
+    }
+  }
+  
+  .animate-shine {
+    animation: shine 2s linear infinite;
+  }
   
   
   .animate-rotate-slow {

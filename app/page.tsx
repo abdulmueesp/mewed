@@ -75,18 +75,28 @@ export default function Home() {
             </h1>
 
             <p className={`${nunito.className} mt-6 text-gray-500 text-[15px] md:text-lg max-w-md`}>
-              Tozyotech provides end-to-end software solutions, from custom development to enterprise-grade applications.
+              <strong>Tozyotech</strong> provides end-to-end software solutions, from custom development to enterprise-grade applications.
             </p>
           </div>
-          <div className="p-1 rounded-md flex justify-center items-center border border-gray-400 mt-6 md:mt-10">
+          {/* <div className="p-1 rounded-md flex justify-center items-center border border-gray-400 mt-6 md:mt-10">
             <button
               className={`${orbitron.className} px-6 md:px-8 py-2 text-white font-semibold rounded-md 
-    bg-gradient-to-r from-[#e23a03] to-[#9c1607] 
-    shadow-md hover:opacity-90 hover:scale-[1.02] transition-all duration-300`}
+    bg-gradient-to-r from-[#e23a03] to-[#9c1607] `}
             >
               Get Connected
             </button>
-          </div>
+          </div> */}
+          <div className="p-1 rounded-md flex justify-center items-center border border-gray-400 mt-6 md:mt-10">
+  <button
+    className={`${orbitron.className} relative overflow-hidden px-6 md:px-8 py-2 text-white font-semibold rounded-md bg-gradient-to-r from-[#e23a03] to-[#9c1607]`}
+  >
+    <span className="relative z-10">Get Connected</span>
+
+    {/* Continuous Shine Line */}
+    <span className="absolute top-0 left-[-100%] w-[80px] h-full bg-gradient-to-r from-transparent via-white/60 to-transparent transform skew-x-[-20deg] animate-shine" />
+  </button>
+</div>
+
         </div>
 
         {/* RIGHT SIDE - Cube */}
@@ -99,10 +109,7 @@ export default function Home() {
   border-r-[30px] border-r-transparent 
   border-b-[45px] border-b-green-400 
   opacity-50 animate-rotate-slow-rev"></div>
-
-
           </div>
-
           {/* Cube */}
           <div className="relative z-10 h-[150px] md:h-min border-blue-500 ">
             <RubiksCube />
@@ -112,10 +119,11 @@ export default function Home() {
 
       </div>
       {/* about section  */}
-      <div className="flex justify-center items-center px-20 mb-4 mt-[40px]">
-  <div className="w-full h-[500px] rounded-md shadow-2xl flex flex-col md:flex-row items-center justify-between bg-white">
+      <div className="flex justify-center items-center px-4 sm:px-10 md:px-20 mb-8 mt-[40px]">
+  <div className="w-full max-w-7xl h-auto md:h-[500px] rounded-md shadow-2xl flex flex-col md:flex-row items-center justify-between bg-white overflow-hidden">
+    
     {/* LEFT SIDE - IMAGE */}
-    <div className="w-full md:w-1/2 h-full flex justify-center items-center p-3">
+    <div className="w-full md:w-1/2 h-[250px] md:h-full flex justify-center items-center p-3">
       <img
         src="/about1.png"
         alt="About Us"
@@ -124,35 +132,36 @@ export default function Home() {
     </div>
 
     {/* RIGHT SIDE - CONTENT */}
-    <div className="w-full md:w-1/2 h-full flex flex-col justify-between pl-0 md:pl-10 py-6">
-     
-      <button className={`${nunito.className} p-1 border w-[100px] rounded-md`}>About Us</button>
+    <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col py-6 px-4 md:py-[15px] md:pr-12 gap-6">
+      
+      {/* TOP BUTTON */}
+      <button className={`${nunito.className} p-1 border w-[110px] rounded-md text-sm`}>
+        About Us
+      </button>
 
-      {/* MIDDLE - TEXT + GIF */}
-      <div className="flex flex-col items-center justify-center border ">
-        <p className="text-black text-center text-lg font-semibold mb-2">
-          WE ARE DEVELOP THAT BRING YOUR IDEAS ALIVE
+      {/* HEADING + LINE */}
+      <div className="flex flex-col">
+        <p className={`${orbitron.className} text-black text-2xl md:text-3xl font-semibold mb-1`}>
+          We Build Software That Brings <br className="hidden md:block" />
+          Your Ideas to Life
         </p>
         <img
           src="/lines.png"
           alt="Line Animation"
-          className="w-[150px] h-[40px]"
+          className="w-[120px] md:w-[150px] h-[35px] md:h-[40px] ml-2 md:ml-4"
         />
       </div>
 
       {/* DESCRIPTION */}
-      <p className="text-gray-600 text-sm leading-relaxed mb-6 border">
-        <strong>EXOUZIA</strong> is a holistic software development company that
-        provides customers with A to Z services in IT and ITES sectors. We
-        provide top domain expertise and proficiency in diverse technologies such
-        as SAAS, mobile, and cloud. With rigorous QA standards, we offer
-        cutting-edge solutions. Our team of high-profile technocrats ensures
-        efficient business operations for our clients.
+      <p className={`${nunito.className} text-gray-600 text-sm md:text-[16px] leading-relaxed`}>
+        <strong>Tozyotech</strong> is a forward-thinking software development company that provides end-to-end IT and ITES solutions. We specialize in transforming ideas into impactful digital products through our expertise in web, mobile, SaaS, and cloud technologies. With a strong focus on innovation, quality, and performance, our skilled team delivers customized, scalable solutions that drive business growth and digital success.
       </p>
 
-      {/* BOTTOM - BUTTON */}
-      <div>
-        <button className="px-6 py-2 bg-[#e23a03] hover:bg-[#9c1607] text-white border-2 border-black rounded-md shadow-md transition duration-300">
+      {/* BOTTOM BUTTON */}
+      <div className="inline-flex border border-gray-400 p-1 rounded-md w-fit">
+        <button
+          className={`${orbitron.className} px-6 py-2 bg-gradient-to-r from-[#e23a03] to-[#9c1607] text-white rounded-md font-semibold text-sm md:text-base`}
+        >
           More About Us
         </button>
       </div>
@@ -162,7 +171,11 @@ export default function Home() {
 
 
 
-     <div className="h-[300px] w-full border mb-4"></div>
+
+      <div className="h-[300px] w-full  mb-4">
+     
+
+      </div>
     </div>
   );
 }
