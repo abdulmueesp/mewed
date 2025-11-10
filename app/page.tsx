@@ -1,10 +1,13 @@
 
 "use client";
-
 import RubiksCube from "@/components/CubeScene";
 import Header from "@/components/header";
+import WhatWeDoSection from "@/components/whatwedo";
 import { Orbitron } from "next/font/google";
-import { Exo_2, Nunito } from "next/font/google";
+import { Nunito } from "next/font/google";
+
+import { useEffect } from "react";
+
 const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -15,6 +18,7 @@ const nunito = Nunito({
 });
 
 export default function Home() {
+ 
   return (
     <div className="min-h-screen bg-gray-50 ">
       <Header />
@@ -87,15 +91,15 @@ export default function Home() {
             </button>
           </div> */}
           <div className="p-1 rounded-md flex justify-center items-center border border-gray-400 mt-6 md:mt-10">
-  <button
-    className={`${orbitron.className} relative overflow-hidden px-6 md:px-8 py-2 text-white font-semibold rounded-md bg-gradient-to-r from-[#e23a03] to-[#9c1607]`}
-  >
-    <span className="relative z-10">Get Connected</span>
+            <button
+              className={`${orbitron.className} relative overflow-hidden px-6 md:px-8 py-2 text-white font-semibold rounded-md bg-gradient-to-r from-[#e23a03] to-[#9c1607]`}
+            >
+              <span className="relative z-10">Get Connected</span>
 
-    {/* Continuous Shine Line */}
-    <span className="absolute top-0 left-[-100%] w-[80px] h-full bg-gradient-to-r from-transparent via-white/60 to-transparent transform skew-x-[-20deg] animate-shine" />
-  </button>
-</div>
+              {/* Continuous Shine Line */}
+              <span className="absolute top-0 left-[-100%] w-[80px] h-full bg-gradient-to-r from-transparent via-white/60 to-transparent transform skew-x-[-20deg] animate-shine" />
+            </button>
+          </div>
 
         </div>
 
@@ -120,62 +124,57 @@ export default function Home() {
       </div>
       {/* about section  */}
       <div className="flex justify-center items-center px-4 sm:px-10 md:px-20 mb-8 mt-[40px]">
-  <div className="w-full max-w-7xl h-auto md:h-[500px] rounded-md shadow-2xl flex flex-col md:flex-row items-center justify-between bg-white overflow-hidden">
-    
-    {/* LEFT SIDE - IMAGE */}
-    <div className="w-full md:w-1/2 h-[250px] md:h-full flex justify-center items-center p-3">
-      <img
-        src="/about1.png"
-        alt="About Us"
-        className="w-full h-full object-cover rounded-md"
-      />
-    </div>
+        <div className="w-full max-w-7xl h-auto md:h-[500px] rounded-md shadow-2xl flex flex-col md:flex-row items-center justify-between bg-white overflow-hidden">
 
-    {/* RIGHT SIDE - CONTENT */}
-    <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col py-6 px-4 md:py-[15px] md:pr-12 gap-6">
-      
-      {/* TOP BUTTON */}
-      <button className={`${nunito.className} p-1 border w-[110px] rounded-md text-sm`}>
-        About Us
-      </button>
+          {/* LEFT SIDE - IMAGE */}
+          <div className="w-full md:w-1/2 h-[250px] md:h-full flex justify-center items-center p-3">
+            <img
+              src="/about1.png"
+              alt="About Us"
+              className="w-full h-full object-cover rounded-md"
+            />
+          </div>
 
-      {/* HEADING + LINE */}
-      <div className="flex flex-col">
-        <p className={`${orbitron.className} text-black text-2xl md:text-3xl font-semibold mb-1`}>
-          We Build Software That Brings <br className="hidden md:block" />
-          Your Ideas to Life
-        </p>
-        <img
-          src="/lines.png"
-          alt="Line Animation"
-          className="w-[120px] md:w-[150px] h-[35px] md:h-[40px] ml-2 md:ml-4"
-        />
+          {/* RIGHT SIDE - CONTENT */}
+          <div className="w-full md:w-1/2 h-auto md:h-full flex flex-col py-6 px-4 md:py-[15px] md:pr-12 gap-6">
+
+            {/* TOP BUTTON */}
+            <button className={`${nunito.className} p-1 border w-[110px] rounded-md text-sm`}>
+              About Us
+            </button>
+
+            {/* HEADING + LINE */}
+            <div className="flex flex-col">
+              <p className={`${orbitron.className} text-black text-2xl md:text-3xl font-semibold mb-1`}>
+                We Build Software That Brings <br className="hidden md:block" />
+                Your Ideas to Life
+              </p>
+              <img
+                src="/lines.png"
+                alt="Line Animation"
+                className="w-[120px] md:w-[150px] h-[35px] md:h-[40px] ml-2 md:ml-4"
+              />
+            </div>
+
+            {/* DESCRIPTION */}
+            <p className={`${nunito.className} text-gray-600 text-sm md:text-[16px] leading-relaxed`}>
+              <strong>Tozyotech</strong> is a forward-thinking software development company that provides end-to-end IT and ITES solutions. We specialize in transforming ideas into impactful digital products through our expertise in web, mobile, SaaS, and cloud technologies. With a strong focus on innovation, quality, and performance, our skilled team delivers customized, scalable solutions that drive business growth and digital success.
+            </p>
+
+            {/* BOTTOM BUTTON */}
+            <div className="inline-flex border border-gray-400 p-1 rounded-md w-fit">
+              <button
+                className={`${orbitron.className} px-6 py-2 bg-gradient-to-r from-[#e23a03] to-[#9c1607] text-white rounded-md font-semibold text-sm md:text-base`}
+              >
+                More About Us
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* DESCRIPTION */}
-      <p className={`${nunito.className} text-gray-600 text-sm md:text-[16px] leading-relaxed`}>
-        <strong>Tozyotech</strong> is a forward-thinking software development company that provides end-to-end IT and ITES solutions. We specialize in transforming ideas into impactful digital products through our expertise in web, mobile, SaaS, and cloud technologies. With a strong focus on innovation, quality, and performance, our skilled team delivers customized, scalable solutions that drive business growth and digital success.
-      </p>
-
-      {/* BOTTOM BUTTON */}
-      <div className="inline-flex border border-gray-400 p-1 rounded-md w-fit">
-        <button
-          className={`${orbitron.className} px-6 py-2 bg-gradient-to-r from-[#e23a03] to-[#9c1607] text-white rounded-md font-semibold text-sm md:text-base`}
-        >
-          More About Us
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-      <div className="h-[300px] w-full  mb-4">
-     
-
-      </div>
+      {/* sections  */}
+      <WhatWeDoSection />
     </div>
   );
 }
