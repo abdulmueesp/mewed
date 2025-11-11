@@ -2,6 +2,7 @@
 "use client";
 import RubiksCube from "@/components/CubeScene";
 import Header from "@/components/header";
+import FaqSection from "@/components/questions";
 import WhatWeDoSection from "@/components/whatwedo";
 import { Orbitron } from "next/font/google";
 import { Nunito } from "next/font/google";
@@ -20,6 +21,7 @@ const nunito = Nunito({
 export default function Home() {
  
   return (
+    <main>
     <div className="min-h-screen bg-gray-50 ">
       <Header />
 
@@ -175,6 +177,8 @@ export default function Home() {
 
       {/* sections  */}
       <WhatWeDoSection />
+      <FaqSection />
     </div>
+    </main>
   );
 }

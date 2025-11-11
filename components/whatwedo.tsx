@@ -66,16 +66,22 @@ const services = [
 ];
 
 export default function WhatWeDoSection() {
-    useEffect(() => {
-        AOS.init({
-          duration: 1000, // slower and smoother
-          easing: "ease-in-out",
-          once: false, // <-- run animation every scroll
-          offset: 100, // triggers a bit later
-        });
-      }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: false, // 👈 run animation every time you scroll back
+        offset: 100,
+      });
+      AOS.refresh();
+    }, 300);
+  
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
-    <section className="w-full px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 py-20 bg-gradient-to-br from-slate-50 to-slate-100">
+    <section className="w-full px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto text-center">
         <h2 
         data-aos="zoom-in"
@@ -90,7 +96,7 @@ export default function WhatWeDoSection() {
             <div
             data-aos="fade-up"
               key={index}
-              className="group relative bg-white rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-500 pt-16 pb-14 px-8 overflow-hidden w-full h-auto"
+              className="group relative bg-white rounded-2xl shadow-md hover:shadow-2xl hover:scale-100 transition-transform duration-900 ease-in-out  pt-16 pb-14 px-8 overflow-hidden w-full h-auto"
             >
              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex blur-3xl ">
   <div className="flex-1 bg-red-300"></div>
