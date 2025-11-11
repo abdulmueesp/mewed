@@ -1,12 +1,12 @@
 
 "use client";
 import RubiksCube from "@/components/CubeScene";
+import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/header";
 import FaqSection from "@/components/questions";
 import WhatWeDoSection from "@/components/whatwedo";
 import { Orbitron } from "next/font/google";
 import { Nunito } from "next/font/google";
-
 import { useEffect } from "react";
 
 const orbitron = Orbitron({
@@ -22,6 +22,7 @@ export default function Home() {
  
   return (
     <main>
+      {/* <CustomCursor /> */}
     <div className="min-h-screen bg-gray-50 ">
       <Header />
 
