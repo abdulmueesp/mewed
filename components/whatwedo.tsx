@@ -83,11 +83,20 @@ export default function WhatWeDoSection() {
   return (
     <section className="w-full px-6 sm:px-10 md:px-16 lg:px-20 xl:px-28 py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 
+        {/* <h2 
         data-aos="zoom-in"
         className={`${orbitron.className} text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 text-gray-800`}>
           What We Do
-        </h2>
+        </h2> */}
+     <h2
+  data-aos="zoom-in"
+  className={`${orbitron.className} text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 text-gray-800`}
+>
+  What We{" "}
+  <span className="bg-gradient-to-r from-[#e23a03] to-[#9c1607] bg-clip-text text-transparent">
+    Do
+  </span>
+</h2>
 
         <div 
         

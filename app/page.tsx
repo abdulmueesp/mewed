@@ -1,5 +1,6 @@
 
 "use client";
+import GradientSection from "@/components/connect";
 import RubiksCube from "@/components/CubeScene";
 import CustomCursor from "@/components/CustomCursor";
 import Header from "@/components/header";
@@ -179,6 +180,7 @@ export default function Home() {
       {/* sections  */}
       <WhatWeDoSection />
       <FaqSection />
+      <GradientSection />
     </div>
     </main>
   );
